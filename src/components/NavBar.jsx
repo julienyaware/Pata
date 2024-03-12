@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 
-function NavBar(props) {
+const NavBar = (props) => {
     const [navStatus, setNavStatus] = useState(false);
 
     const handleNavigation = ()=> {
