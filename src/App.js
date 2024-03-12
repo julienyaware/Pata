@@ -1,12 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login';
+import HomePage from './components/HomePage';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-   Testing 
-  </h1>
-  );
+     <div>
+      <NavBar/>
+     </div> 
+);
 }
 
 export default App;
