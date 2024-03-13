@@ -8,14 +8,15 @@ const AdDisplay = () => {
             <p className='font-bold p-2 text-[#48ddae]'>GET GREAT SERVICES AT GREAT PRICES</p>
             <h1 className='font-bold md:py-6 md:text-7xl sm:text-6xl text-4xl '>Find your service provider</h1>
             <div className='flex items-center justify-center flex-col '>
-            <ReactTyped className='md:text-5xl sm:text-4xl text-xl font-bold md:pl-4 pl-2'
+            <ReactTyped className='md:text-5xl sm:text-4xl text-xl font-bold md:pl-4 pl-2 py-4'
             strings={['Get Fast, accessible clientelle and services']}
             typeSpeed={120}
             backSpeed={140}
             loop
           />
             </div>
-            
+            <p className='text-gray-400 md:text-2xl text-xl font-bold py-4'>Get service providers closest to you</p>
+            <button className='bg-[#48ddae] rounded-md font-medium w-[200px] my-g mx-auto py-3 text-black'>Find Services</button>
             </div> 
         </div>
     );
