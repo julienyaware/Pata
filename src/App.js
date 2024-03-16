@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import AdDisplay from './components/AdDisplay';
 import AboutUs from './components/AboutUs';
 import ConsultUs from './components/ConsultUs';
+import Services from './components/Services';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <AdDisplay/>
       <AboutUs/>
       <ConsultUs/>
+      <Services/>
      </div> 
 );
 }
