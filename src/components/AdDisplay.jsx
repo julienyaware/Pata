@@ -16,7 +16,7 @@ const AdDisplay = () => {
           />
             </div>
             <p className='text-gray-400 md:text-2xl text-xl font-bold py-4'>Get service providers closest to you</p>
-            <button className='bg-[#1623CE] rounded-md font-medium w-[200px] my-g mx-auto py-3 text-black'>Find Services</button>
+            <button className='bg-[#1623CE] rounded-md font-medium w-[200px] my-4 mx-auto py-3 text-black'>Find Services</button>
             </div> 
         </div>
     );

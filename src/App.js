@@ -5,6 +5,7 @@ import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
 import AdDisplay from './components/AdDisplay';
 import AboutUs from './components/AboutUs';
+import ConsultUs from './components/ConsultUs';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <NavBar/>
       <AdDisplay/>
       <AboutUs/>
+      <ConsultUs/>
      </div> 
 );
 }
