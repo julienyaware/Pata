@@ -20,8 +20,8 @@ const Services = () => {
     </div>
 
 
-    <div className='w-full shadow-xl rounded-lg flex flex-col p-4 my-4 hover:scale-105 duration-300'>
-<img className='w-20 mx-auto mt-[3rem] bg-white' src={plumber} alt='services'/>
+    <div className='w-full shadow-xl rounded-lg flex flex-col p-4 bg-gray-100 md:my-0 my-8 hover:scale-105 duration-300'>
+<img className='w-20 mx-auto mt-[3rem] bg-transparent' src={plumber} alt='services'/>
 <h2 className='text-2xl font-bold text-center py-8'>Hair Dresser</h2>
 <p className='text-center text-4xl font-bold'>Link with Provider</p>
 <div className='text-center font-medium'>

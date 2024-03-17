@@ -7,6 +7,7 @@ import AdDisplay from './components/AdDisplay';
 import AboutUs from './components/AboutUs';
 import ConsultUs from './components/ConsultUs';
 import Services from './components/Services';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <AboutUs/>
       <ConsultUs/>
       <Services/>
+      <Footer/>
      </div> 
 );
 }
