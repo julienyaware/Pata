@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
@@ -8,17 +8,32 @@ import AboutUs from './components/AboutUs';
 import ConsultUs from './components/ConsultUs';
 import Services from './components/Services';
 import Footer from './components/Footer';
+import SignUp from './components/SignUp';
 
 function App() {
   return (
-     <div>
-      <NavBar/>
-      <AdDisplay/>
-      <AboutUs/>
-      <ConsultUs/>
-      <Services/>
-      <Footer/>
-     </div> 
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage/>}>
+          <Route index element={<HomePage/>} />
+          <Route path="login" element={<Login/>} />
+          <Route path="signUp" element={<SignUp/>} />
+          <Route path="ads" element={<AdDisplay/>} />
+          <Route path="aboutUs" element={<AboutUs/>} />
+          <Route path="consultUS" element={<ConsultUs/>} />
+          <Route path="services" element={ <Services/>} />
+          <Route path="Footer" element={ <Footer/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+   
+      
+      
+      
+      
+     
+     
+    
 );
 }
 
