@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import HomePage from './components/HomePage';
 import NavBar from './components/NavBar';
@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage/>}>
+        <Route path="/" element={<HomePage/>}/>
           <Route index element={<HomePage/>} />
           <Route path="login" element={<Login/>} />
           <Route path="signUp" element={<SignUp/>} />
@@ -23,7 +23,6 @@ function App() {
           <Route path="consultUS" element={<ConsultUs/>} />
           <Route path="services" element={ <Services/>} />
           <Route path="Footer" element={ <Footer/>} />
-        </Route>
       </Routes>
     </BrowserRouter>
    
