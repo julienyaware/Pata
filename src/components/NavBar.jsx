@@ -18,7 +18,7 @@ const NavBar = (props) => {
                 <li className='p-5'><Link to="/aboutUS">About</Link></li>
                 <li className='p-5'><Link to="/services">Services</Link></li>
                 <li className='p-5'><Link to="/login">Login</Link></li>
-                <li className='p-5'><Link to="/register">Register</Link></li>
+                <li className='p-5'><Link to="/signUp">Register</Link></li>
             </ul>
             <div onClick={handleNavigation} className='block md:hidden'>
                 {navStatus ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}

@@ -45,7 +45,6 @@ const Login = () => {
                                 id="email-address"
                                 name="email"
                                 type="email"
-                                autoComplete="email"
                                 required
                                 value = { email } onChange = { (e) => setEmail(e.target.value) }
                                 className="p-5 flex w-full rounded-md text-black appearance-none  relative   px-3  placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300  text-4xl focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
@@ -57,7 +56,6 @@ const Login = () => {
                                 id="password"
                                 name="password"
                                 type="password"
-                                autoComplete="current-password"
                                 required
                                 value = { password } onChange = { (e) => setPassword(e.target.value)}
                                 className="p-5 my-4 flex w-full rounded-md text-black appearance-none  relative  px-3 text-4xl placeholder-gray-500 rounded-t-md bg-gray-100 border border-gray-300  focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"

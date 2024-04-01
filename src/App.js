@@ -9,6 +9,7 @@ import ConsultUs from './components/ConsultUs';
 import Services from './components/Services';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
+import ProfileHomepage from './components/ProfileHomepage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="signUp" element={<SignUp/>} />
           <Route path="ads" element={<AdDisplay/>} />
           <Route path="aboutUs" element={<AboutUs/>} />
+          <Route path='profileHomepage' element={<ProfileHomepage/>} />
           <Route path="consultUS" element={<ConsultUs/>} />
           <Route path="services" element={ <Services/>} />
           <Route path="Footer" element={ <Footer/>} />
