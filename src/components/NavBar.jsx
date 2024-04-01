@@ -14,6 +14,7 @@ const NavBar = (props) => {
         <div className='text-white flex justify-between items-center h-24 max-w-[1240px] px-4 mx-auto'>
             <h1 className='w-full text-3xl font-bold text-[#1623CE]'>NIPATE</h1>
             <ul className='hidden md:flex'>
+            <li className='p-5'><Link to="/">Home</Link></li>
                 <li className='p-5'><Link to="/aboutUS">About</Link></li>
                 <li className='p-5'><Link to="/services">Services</Link></li>
                 <li className='p-5'><Link to="/login">Login</Link></li>

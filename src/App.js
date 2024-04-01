@@ -13,6 +13,7 @@ import SignUp from './components/SignUp';
 function App() {
   return (
     <BrowserRouter>
+    <NavBar/>
       <Routes>
         <Route path="/" element={<HomePage/>}/>
           <Route index element={<HomePage/>} />
@@ -25,14 +26,6 @@ function App() {
           <Route path="Footer" element={ <Footer/>} />
       </Routes>
     </BrowserRouter>
-   
-      
-      
-      
-      
-     
-     
-    
 );
 }
 

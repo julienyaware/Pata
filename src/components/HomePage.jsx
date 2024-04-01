@@ -10,13 +10,11 @@ import Login from './Login';
 function HomePage(props) {
     return (
         <div>
-            <NavBar />
             <AdDisplay />
             <AboutUs />
             <ConsultUs />
             <Services />
             <Footer />
-            <Login />
         </div>
     );
 }
