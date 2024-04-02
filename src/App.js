@@ -10,8 +10,12 @@ import Services from './components/Services';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
 import ProfileHomepage from './components/ProfileHomepage';
+import ProfileImageUpload from './components/ProfileImageUpload';
+import ProfileComments from './components/ProfileComments';
 
 function App() {
+
+ 
   return (
     <BrowserRouter>
     <NavBar/>
@@ -26,6 +30,9 @@ function App() {
           <Route path="consultUS" element={<ConsultUs/>} />
           <Route path="services" element={ <Services/>} />
           <Route path="Footer" element={ <Footer/>} />
+          <Route path="profilehomepage" element={ <ProfileHomepage/>} />
+          <Route path="profileimageupload" element={ <ProfileImageUpload/>} />
+          <Route path="profilecomments" element={ <ProfileComments/>} />
       </Routes>
     </BrowserRouter>
 );

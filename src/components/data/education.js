@@ -1,0 +1,1 @@
+export const education = ["Degree","College", "Diploma","Certification","training","other"]
