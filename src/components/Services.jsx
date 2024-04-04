@@ -1,5 +1,6 @@
 import React from 'react';
 import plumber from '../assets/plumber.png'
+import { Link, seNavigate, useNavigate } from 'react-router-dom';
 
 
 
@@ -46,7 +47,7 @@ const Services = () => {
 
 </div>
 <div className='flex mx-auto justify-center'>
-<button className= 'justify-center bg-black rounded-md font-medium w-[200px] my-6 mx-auto py-3  text-[#1623CE]' >Browse More Services...</button>
+<button className= 'justify-center bg-black rounded-md font-medium w-[200px] my-6 mx-auto py-3  text-[#1623CE]' ><Link to="/categories"/>Browse More Services...</button>
 </div>
         </div>
     );
