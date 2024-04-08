@@ -19,7 +19,7 @@ const SignUp = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
-                    navigate("./profileHomepage");
+                    navigate("./login");
                     // ...
                 })
                 .catch((error) => {

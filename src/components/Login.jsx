@@ -1,25 +1,64 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { auth } from "../Firabase";
 import { useState } from 'react';
-import { signInWithEmailAndPassword  } from "firebase/auth";
+import {
+    signOut,
+    setPersistence,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    browserSessionPersistence,
+  } from "firebase/auth";
+  import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { Link, seNavigate, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const Login = () => {
     const navigate = useNavigate();
+    const {dispatch} = useContext(AuthContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [notice, setNotice] = useState("");
+    
+    const defaultState = {
+        email: "",
+        password: "",
+      };
+      const [formState, setFormState] = useState(defaultState);
+      
+      const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormState((prevState) => ({ ...prevState, [name]: value }));
+  };
+
 
     const loginWithUsernameAndPassword = async (e) => {
-        e.preventDefault();
-
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate("./profilehomepage");
-        } catch {
-            setNotice("You entered a wrong username or password.");
-        }
+      e.preventDefault()
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+        dispatch({type:"LOGIN", payload:user})
+        navigate("./profilehomepage")
+      })
+      .catch((error) => {
+        setNotice("You entered a wrong username or password.");
+      });
     }
+
+
+      const handleLogout = (event) => {
+        event.preventDefault();
+        signOut(auth)
+          .then(() => {
+            // setUserAuth(null);
+            window.alert("Logout Success");
+          })
+          .catch((error) => {
+            window.alert(error.message);
+          });
+      };
+    
+    
     return (
         <div className="text-white min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
@@ -28,7 +67,8 @@ const Login = () => {
                         Login
                     </h2>
                 </div>
-                <form className="mt-8 space-y-6">
+                <form className="mt-8 space-y-6"
+                onReset={(e) => handleLogout(e)}>
                 { notice !== '' &&
                 
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -46,7 +86,7 @@ const Login = () => {
                                 name="email"
                                 type="email"
                                 required
-                                value = { email } onChange = { (e) => setEmail(e.target.value) }
+                                value = {email} onChange = {  (e) => setEmail(e.target.value)  }
                                 className="p-5 flex w-full rounded-md text-black appearance-none  relative   px-3  placeholder-gray-500 rounded-t-md bg-gray-50 border border-gray-300  text-4xl focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
                                 placeholder="Email address"
                             />
@@ -57,7 +97,7 @@ const Login = () => {
                                 name="password"
                                 type="password"
                                 required
-                                value = { password } onChange = { (e) => setPassword(e.target.value)}
+                                value = { password }  onChange = { (e) => setPassword(e.target.value)}
                                 className="p-5 my-4 flex w-full rounded-md text-black appearance-none  relative  px-3 text-4xl placeholder-gray-500 rounded-t-md bg-gray-100 border border-gray-300  focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
                                 placeholder="Password"
                             />
@@ -69,7 +109,7 @@ const Login = () => {
                             onClick = {(e) => loginWithUsernameAndPassword(e)}
                             className=" text-black w-full flex justify-center py-3 px-4 border border-transparent   bg-[#1623CE] rounded-md font-medium "
                         >
-                            Login
+                          Login
                         </button>
                     </div>
                     <div className="flex items-center justify-between">

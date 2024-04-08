@@ -5,14 +5,14 @@ import { Tabs, Tab } from './Tabs';
 import ProfileComments from './ProfileComments';
 
 
-const ProfileHomepage = () => {
+const ProfileHomepage = ({crudOps}) => {
   return (
     <div>
     <Tabs>
       <Tab label="PROFILE" >
       <div className='w-full py-[30 rem] px-4 bg-white text-black'>
       <div class="h-full w-full">
-        <ProfileTabs />
+        <ProfileTabs crudOps={crudOps}/>
       </div>
     </div>
       </Tab>

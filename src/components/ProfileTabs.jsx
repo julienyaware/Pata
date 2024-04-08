@@ -5,8 +5,28 @@ import { states } from './data/states';
 import { education } from './data/education';
 import { availbility } from './data/availability';
 
-const ProfileTabs = () => {
+const ProfileTabs = ({ crudOps }) => {
     const [step, setStep] = useState(1);
+    const [handleCreate] = crudOps;
+    const defaultState = {
+        firstName: '',
+        lastName: '',
+        gender: '',
+        state: '',
+        education: '',
+        yearsOfExperience: '',
+        hourlyRate: '',
+        availability: '',
+        phoneNumber: '',
+        occupation: '',
+        workDescription: ''
+    };
+    const [formState, setFormState] = useState(defaultState);
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState((prevState) => ({ ...prevState, [name]: value }));
+    };
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -21,13 +41,13 @@ const ProfileTabs = () => {
         workDescription: ''
     });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFormData(prevState => ({
+    //         ...prevState,
+    //         [name]: value
+    //     }));
+    // };
 
     const nextStep = () => {
         setStep(step + 1);
@@ -43,8 +63,14 @@ const ProfileTabs = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
+        console.log(formState);
     };
+
+    const profileInformationSubmitted = (e, formState) => {
+        nextStep()
+        console.log(formState);
+        handleCreate(e, formState)
+    }
 
     return (
         <div className="relative min-h-screen flex" >
@@ -73,54 +99,54 @@ const ProfileTabs = () => {
 
                             <div>
                                 <input
-                                required 
+                                    required
                                     type="text"
                                     placeholder="First Name"
-                                    name="firstName" 
+                                    name="firstName"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     style={{ backgroundColor: '#e0cfc8' }}
-                                    value={formData.firstName}
+                                    value={formState.firstName}
                                     onChange={handleChange}
                                 />
                             </div>
 
                             <div>
                                 <input
-                                required 
+                                    required
                                     type="text"
                                     placeholder="Last Name"
-                                    name="lastName" 
+                                    name="lastName"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     style={{ backgroundColor: '#e0cfc8' }}
-                                    value={formData.lastName}
+                                    value={formState.lastName}
                                     onChange={handleChange}
                                 />
                             </div>
 
 
-                         
+
                             <div>
                                 <input
-                                required 
+                                    required
                                     type="number"
                                     placeholder="Phone Number"
-                                    name="phoneNumber" 
+                                    name="phoneNumber"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     style={{ backgroundColor: '#e0cfc8' }}
-                                    value={formData.phoneNumber} 
+                                    value={formState.phoneNumber}
                                     onChange={handleChange}
                                 />
                             </div>
 
                             <div>
-                                <select 
-                                required 
-                                placeholder= "state"
-                                name='state'
-                                className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
-                                onChange={handleChange}
-                                style={{ backgroundColor: '#e0cfc8' }}
-                                value={formData.state} 
+                                <select
+                                    required
+                                    placeholder="state"
+                                    name='state'
+                                    className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
+                                    onChange={handleChange}
+                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    value={formState.state}
                                 >
                                     {states.map((option, index) => {
                                         return (
@@ -132,16 +158,16 @@ const ProfileTabs = () => {
                                 </select>
                             </div>
 
-                
+
                             <div>
                                 <input
-                                required 
+                                    required
                                     type="text"
                                     placeholder="Occupation"
-                                    name="occupation" 
+                                    name="occupation"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     style={{ backgroundColor: '#e0cfc8' }}
-                                    value={formData.occupation}
+                                    value={formState.occupation}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -154,7 +180,7 @@ const ProfileTabs = () => {
                     )}
                     {step === 2 && (
                         <motion.div
-                            key={step} 
+                            key={step}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
@@ -170,14 +196,14 @@ const ProfileTabs = () => {
                                 Let’s talk Qualifications. Any training/certifications or diplomas?
                             </div>
                             <div>
-                                <select 
-                                required 
-                                placeholder ="Education"
-                                name='education'
-                                className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
-                                onChange={handleChange}
-                                style={{ backgroundColor: '#e0cfc8' }}
-                                value={formData.education}
+                                <select
+                                    required
+                                    placeholder="Education"
+                                    name='education'
+                                    className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
+                                    onChange={handleChange}
+                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    value={formState.education}
                                 >
                                     {education.map((option, index) => {
                                         return (
@@ -189,21 +215,21 @@ const ProfileTabs = () => {
                                 </select>
                             </div>
 
-                             {/* Number input field */}
-                             <div>
+                            {/* Number input field */}
+                            <div>
                                 <input
-                                required
+                                    required
                                     type="number"
                                     placeholder="Years Of experience"
                                     name="yearsOfExperience"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     style={{ backgroundColor: '#e0cfc8' }}
-                                    value={formData.yearsOfExperience}
+                                    value={formState.yearsOfExperience}
                                     onChange={handleChange}
                                 />
                             </div>
                             <div>
-                                
+
 
                             </div>
                             <div className="flex justify-center mt-12">
@@ -236,44 +262,44 @@ const ProfileTabs = () => {
                             </div>
                             <div>
                                 <input
-                                required
+                                    required
                                     type="text"
                                     placeholder="Hourly Rate"
-                                    name="hourlyRate" 
+                                    name="hourlyRate"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     style={{ backgroundColor: '#e0cfc8' }}
-                                    value={formData.hourlyRate} 
+                                    value={formState.hourlyRate}
                                     onChange={handleChange}
                                 />
                             </div>
 
-                            <select 
-                            required
+                            <select
+                                required
                                 className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                 onChange={handleChange}
                                 name='availability'
-                                placeholder ="Availability"
+                                placeholder="Availability"
                                 style={{ backgroundColor: '#e0cfc8' }}
-                                value={formData.availability} // 
-                                >
-                                    {availbility.map((option, index) => {
-                                        return (
-                                            <option key={index}>
-                                                {option}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
+                                value={formState.availability} // 
+                            >
+                                {availbility.map((option, index) => {
+                                    return (
+                                        <option key={index}>
+                                            {option}
+                                        </option>
+                                    );
+                                })}
+                            </select>
 
                             <div>
                                 <textarea
                                     type="text"
                                     placeholder="Anything else would like your clients to know"
-                                    name="workDescription" 
+                                    name="workDescription"
                                     className="mt-4 border border-gray-400 w-full rounded-md px-4 py-3 focus:outline-none "
-                                    rows={8} 
+                                    rows={8}
                                     style={{ backgroundColor: '#e0cfc8' }}
-                                    value={formData.workDescription} 
+                                    value={formState.workDescription}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -282,7 +308,8 @@ const ProfileTabs = () => {
                                 <button type="button" onClick={prevStep} className=" mr-4 bg-black text-white font-bold py-2 px-4 rounded">
                                     Previous
                                 </button>
-                                <button type="button" onClick={nextStep} className=" bg-black text-white font-bold py-2 px-4 rounded">
+                                <button type="button" onClick={(e) => profileInformationSubmitted(e, formState)} className=" bg-black text-white font-bold py-2 px-4 rounded"
+                                >
                                     Submit
                                 </button>
                             </div>
