@@ -33,7 +33,7 @@ function App() {
     return currentUser ? (children) : <Navigate to="/login" />
     
   }
-  console.log(currentUser.uid)
+  
 
   const handleCreate = async (event, formState) => {
     event.preventDefault();
