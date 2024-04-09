@@ -5,6 +5,12 @@ import { Link, seNavigate, useNavigate } from 'react-router-dom';
 
 
 const Services = () => {
+
+    const navigate = useNavigate()
+
+    const browseProviders = () => {
+        navigate("./categories")
+    }
     return (
         <div className='w-full py-[10 rem] px-4 bg-white'>
 <div className='max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8 '>
@@ -47,7 +53,7 @@ const Services = () => {
 
 </div>
 <div className='flex mx-auto justify-center'>
-<button className= 'justify-center bg-black rounded-md font-medium w-[200px] my-6 mx-auto py-3  text-[#1623CE]' ><Link to="/categories"/>Browse More Services...</button>
+<button className= 'justify-center bg-black rounded-md font-medium w-[200px] my-6 mx-auto py-3  text-[#1623CE]' >Browse More Services...</button>
 </div>
         </div>
     );

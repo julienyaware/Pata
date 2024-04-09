@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { states } from './data/states';
 import { education } from './data/education';
 import { availbility } from './data/availability';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, deleteUser } from "firebase/auth";
 
 const ProfileTabs = ({ crudOps }) => {
     const [step, setStep] = useState(1);
+    const {currentUser} = useContext(AuthContext)
+
+    const auth = getAuth();
+     const user = auth.currentUser;
+    const navigate = useNavigate()
+
     const [handleCreate] = crudOps;
     const defaultState = {
         firstName: '',
@@ -41,6 +50,21 @@ const ProfileTabs = ({ crudOps }) => {
         workDescription: ''
     });
 
+    // const deleteUserAccount = ()=> {
+
+    //     try {
+    //         deleteUser(user).then(() => {
+    //             window.alert("Account has been deleted successfully")
+    //             navigate("./")
+    //         })
+    //     } catch (error) {
+    //         window.alert(error)
+    //     }
+        
+        
+           
+    // }
+
     // const handleChange = (e) => {
     //     const { name, value } = e.target;
     //     setFormData(prevState => ({
@@ -74,6 +98,11 @@ const ProfileTabs = ({ crudOps }) => {
 
     return (
         <div className="relative min-h-screen flex" >
+             <div>
+        <button className='bg-[#fc4747] rounded-md font-medium w-[200px] my-6 mx-auto py-3  text-white'>
+              Delete User Account
+          </button>
+    </div>
             <div className="container max-w-screen-xl mx-auto my-auto relative flex flex-col w-4/5">
                 <div className="text-3xl font-BG  whitespace-pre-line text-center tracking-tighter text-black">
                     Service Provider Information

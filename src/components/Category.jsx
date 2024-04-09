@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Category = () => {
+const Category = ({providersInfo}) => {
     return (
         <div class="flex items-center h-screen w-full justify-center">
 
@@ -17,15 +17,15 @@ const Category = () => {
                     <table class="text-xs my-3">
                         <tbody><tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold">Address</td>
-                            <td class="px-2 py-2">Name of Provider</td>
+                            <td class="px-2 py-2">{providersInfo.firstName}</td>
                         </tr>
                         <tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold">Phone</td>
-                            <td class="px-2 py-2">+0000000000000</td>
+                            <td class="px-2 py-2">{providersInfo.phoneNumber}</td>
                         </tr>
                         <tr>
-                            <td class="px-2 py-2 text-gray-500 font-semibold">Email</td>
-                            <td class="px-2 py-2">john@exmaple.com</td>
+                            <td class="px-2 py-2 text-gray-500 font-semibold">Ocuppation</td>
+                            <td class="px-2 py-2">{providersInfo.occupation}</td>
                         </tr>
                     </tbody></table>
         

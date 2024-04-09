@@ -19,6 +19,7 @@ import ProfileHomepage from './components/ProfileHomepage';
 import ProfileImageUpload from './components/ProfileImageUpload';
 import ProfileComments from './components/ProfileComments';
 import { AuthContext } from './context/AuthContext';
+import Providers from './components/Providers';
 
 
 
@@ -76,6 +77,7 @@ function App() {
           <Route path="profileimageupload" element={ <RequireAuth><ProfileImageUpload/></RequireAuth>} />
           <Route path="profilecomments" element={ <RequireAuth><ProfileComments/></RequireAuth>} />
           <Route path="categories" element={ <Categories/>} />
+          <Route path="providers" element={ <Providers/>} />
           <Route path="category" element={ <Category/>} />
       </Routes>
     </BrowserRouter>
