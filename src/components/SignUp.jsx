@@ -11,16 +11,40 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [notice, setNotice] = useState("");
 
-    const signupWithUsernameAndPassword = async (e) => {
-        e.preventDefault();
+    const validateEmailAndPassword = (e) => {
+        e.preventDefault()
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if(email.trim() === ''){
+          setNotice('Email Address is required')
+          return;
+        }
+        if(password.length>100 && email.length > 50){
+          setNotice('Username must be at most 50 characters and password at most 100 characters')
+          return;
+        }
+        if(password.trim() === '') {
+          setNotice('Password is required')
+          return;
+        }
+        if (!emailPattern.test(email)) {
+            setNotice("Invalid email");
+          return;
+        };
+      
+        if (password.length<6) {
+          setNotice("Password should be at least 6 characters");
+          return;
+        }
+        signupWithUsernameAndPassword(e)
+      };
 
+    const signupWithUsernameAndPassword = async (e) => {
         if (password === confirmPassword) {
             createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Signed up 
+                .then((userCredential) => { 
                     const user = userCredential.user;
                     navigate("./login");
-                    // ...
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -43,7 +67,7 @@ const SignUp = () => {
                 <form className="mt-8 space-y-6">
                     {notice !== '' &&
 
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <div onClick={e => setNotice('')} class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                             <strong class="font-bold">SignUp Error!</strong>
                             <span class="block sm:inline">{notice}</span>
                             <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
@@ -89,7 +113,7 @@ const SignUp = () => {
                     <div>
                         <button
                             type="submit"
-                            onClick={(e) => signupWithUsernameAndPassword(e)}
+                            onClick={(e) => validateEmailAndPassword(e)}
                             className=" text-black w-full flex justify-center py-3 px-4 border border-transparent   bg-[#1623CE] rounded-md font-medium "
                         >
                             Sign Up
