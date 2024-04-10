@@ -10,13 +10,15 @@ import { getAuth, deleteUser } from "firebase/auth";
 
 const ProfileTabs = ({ crudOps }) => {
     const [step, setStep] = useState(1);
-    const {currentUser} = useContext(AuthContext)
+    const { currentUser } = useContext(AuthContext)
+    const [error, setError] = useState('')
 
     const auth = getAuth();
-     const user = auth.currentUser;
+    const user = auth.currentUser;
     const navigate = useNavigate()
 
     const [handleCreate] = crudOps;
+    const [errors, setErrors] = useState({});
     const defaultState = {
         firstName: '',
         lastName: '',
@@ -60,9 +62,9 @@ const ProfileTabs = ({ crudOps }) => {
     //     } catch (error) {
     //         window.alert(error)
     //     }
-        
-        
-           
+
+
+
     // }
 
     // const handleChange = (e) => {
@@ -73,8 +75,55 @@ const ProfileTabs = ({ crudOps }) => {
     //     }));
     // };
 
+    const handleFieldValidations = (e,formState) => {
+        e.preventDefault();
+
+        // Validate each field
+        const validationErrors = {};
+        if (!formState.firstName) {
+            validationErrors.field1 = 'First Name is required';
+        }
+        if (!formState.lastName) {
+            validationErrors.lastName = 'Last Name is required';
+        }
+        if (!formState.phoneNumber) {
+            validationErrors.phoneNumber = 'Phone Number is required';
+        }
+        if (formState.phoneNumber !== 10) {
+            validationErrors.phoneNumber = 'Phone Number has to be 10 digits';
+        }
+        if (!formState.state) {
+            validationErrors.state = 'State is required';
+        }
+        if (!formState.occupation) {
+            validationErrors.occupation = 'Occupation is required';
+        }
+        if (!formState.education) {
+            validationErrors.education = 'Education is required';
+        }
+        if (!formState.yearsOfExperience) {
+            validationErrors.yearsOfExperience = 'Years Of Experience is required';
+        }
+
+        if (!formState.hourlyRate) {
+            validationErrors.hourlyRate = 'Hourly Rate is required';
+        }
+        if (!formState.availability) {
+            validationErrors.availability = 'Availability Rate is required';
+        }
+
+        setErrors(validationErrors);
+
+        // If there are no validation errors, submit the form
+        if (Object.keys(validationErrors).length === 0) {
+            profileInformationSubmitted(e,formState)
+        }
+    };
+
     const nextStep = () => {
         setStep(step + 1);
+
+
     };
 
     const prevStep = () => {
@@ -98,11 +147,11 @@ const ProfileTabs = ({ crudOps }) => {
 
     return (
         <div className="relative min-h-screen flex" >
-             <div>
-        <button className='bg-[#fc4747] rounded-md font-medium w-[200px] my-6 mx-auto py-3  text-white'>
-              Delete User Account
-          </button>
-    </div>
+            <div>
+                <button className='bg-[#fc4747] rounded-md font-medium w-[200px] my-6 mx-auto py-3  text-white'>
+                    Delete User Account
+                </button>
+            </div>
             <div className="container max-w-screen-xl mx-auto my-auto relative flex flex-col w-4/5">
                 <div className="text-3xl font-BG  whitespace-pre-line text-center tracking-tighter text-black">
                     Service Provider Information
@@ -137,6 +186,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     value={formState.firstName}
                                     onChange={handleChange}
                                 />
+                                {errors.firstName && <p className='text-red-500 my-1'>{errors.firstName}</p>}
                             </div>
 
                             <div>
@@ -150,6 +200,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     value={formState.lastName}
                                     onChange={handleChange}
                                 />
+                                {errors.lastName && <p className='text-red-500 my-1'>{errors.lastName}</p>}
                             </div>
 
 
@@ -157,7 +208,7 @@ const ProfileTabs = ({ crudOps }) => {
                             <div>
                                 <input
                                     required
-                                    type="number"
+                                    type="text"
                                     placeholder="Phone Number"
                                     name="phoneNumber"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
@@ -165,6 +216,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     value={formState.phoneNumber}
                                     onChange={handleChange}
                                 />
+                                {errors.phoneNumber && <p className='text-red-500 my-1'>{errors.phoneNumber}</p>}
                             </div>
 
                             <div>
@@ -185,6 +237,7 @@ const ProfileTabs = ({ crudOps }) => {
                                         );
                                     })}
                                 </select>
+                                {errors.state && <p className='text-red-500 my-1'>{errors.state}</p>}
                             </div>
 
 
@@ -199,6 +252,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     value={formState.occupation}
                                     onChange={handleChange}
                                 />
+                                {errors.occupation && <p className='text-red-500 my-1'>{errors.occupation}</p>}
                             </div>
                             <div className="flex justify-end">
                                 <button type="button" onClick={nextStep} className="mt-4 bg-black text-white font-bold py-2 px-4 rounded">
@@ -242,6 +296,7 @@ const ProfileTabs = ({ crudOps }) => {
                                         );
                                     })}
                                 </select>
+                                {errors.education && <p className='text-red-500 my-1'>{errors.education}</p>}
                             </div>
 
                             {/* Number input field */}
@@ -256,6 +311,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     value={formState.yearsOfExperience}
                                     onChange={handleChange}
                                 />
+                                {errors.number && <p className='text-red-500 my-1'>{errors.number}</p>}
                             </div>
                             <div>
 
@@ -300,6 +356,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     value={formState.hourlyRate}
                                     onChange={handleChange}
                                 />
+                                {errors.hourlyRate && <p className='text-red-500 my-1'>{errors.hourlyRate}</p>}
                             </div>
 
                             <select
@@ -319,7 +376,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     );
                                 })}
                             </select>
-
+                            {errors.availability && <p className='text-red-500 my-1'>{errors.availability}</p>}
                             <div>
                                 <textarea
                                     type="text"
@@ -337,7 +394,7 @@ const ProfileTabs = ({ crudOps }) => {
                                 <button type="button" onClick={prevStep} className=" mr-4 bg-black text-white font-bold py-2 px-4 rounded">
                                     Previous
                                 </button>
-                                <button type="button" onClick={(e) => profileInformationSubmitted(e, formState)} className=" bg-black text-white font-bold py-2 px-4 rounded"
+                                <button type="button" onClick={(e) => handleFieldValidations(e, formState)} className=" bg-black text-white font-bold py-2 px-4 rounded"
                                 >
                                     Submit
                                 </button>
