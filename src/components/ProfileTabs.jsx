@@ -75,7 +75,7 @@ const ProfileTabs = ({ crudOps }) => {
     //     }));
     // };
 
-    const handleFieldValidations = (e,formState) => {
+    const handleFieldValidations = (e, formState) => {
         e.preventDefault();
 
         // Validate each field
@@ -116,7 +116,7 @@ const ProfileTabs = ({ crudOps }) => {
 
         // If there are no validation errors, submit the form
         if (Object.keys(validationErrors).length === 0) {
-            profileInformationSubmitted(e,formState)
+            profileInformationSubmitted(e, formState)
         }
     };
 

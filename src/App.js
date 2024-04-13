@@ -24,11 +24,9 @@ import Providers from './components/Providers';
 
 
 function App() {
-  const [userAuth, setUserAuth] = useState(null);
-  const [isLogin, setIsLogin] = useState(false);
+  
 
    const {currentUser} = useContext(AuthContext)
-
   const RequireAuth = ({children}) => {
     return currentUser ? (children) : <Navigate to="/login" />
     

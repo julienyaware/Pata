@@ -36,13 +36,13 @@ const Providers = () => {
         console.log(providerPortfolios);
     }
     return (
-        <div className='w-full py-[10 rem] px-4 bg-white'>
+        <div className='w-full h-full py-[10 rem] px-4 bg-white'>
             
-            <ul>
-            {Object.keys(providerPortfolios || {}).map(item => (
+            <div className='max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8'> 
+            {Object.keys(providerPortfolios).map(item => (
                 <Category providersInfo = {providerPortfolios[item]}/> 
       ))}
-  </ul>
+  </div>
         </div>
     );
 };

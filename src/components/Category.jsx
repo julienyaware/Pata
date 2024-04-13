@@ -1,8 +1,10 @@
 import React from 'react';
 
 const Category = ({providersInfo}) => {
+    console.log('providers infor',providersInfo)
     return (
-        <div class="flex items-center h-screen w-full justify-center">
+        <div >
+                    {/* <div class="flex items-center h-screen w-full justify-center"> */}
 
         <div class="max-w-xs">
             <div class="bg-white shadow-xl rounded-lg py-3">

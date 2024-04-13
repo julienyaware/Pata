@@ -1,40 +1,51 @@
-// import { render, screen } from '@testing-library/react';
-// import App from './App';
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter, Route } from 'react-router-dom';
+import { AuthContext } from './context/AuthContext';
+import App from './App';
 
-// // App.test.js
-// import React from 'react';
-// import { render, screen } from '@testing-library/react';
-// import { BrowserRouter } from 'react-router-dom';
-// import App from './App';
+// Mock AuthContext
+const mockAuthContextValue = {
+    currentUser: { uid: 'user_id' } // Mocking a logged-in user
+};
 
-// test('renders home page by default', () => {
-//   render(
-//     <BrowserRouter>
-//       <App />
-//     </BrowserRouter>
-//   );
-//   const homeElement = screen.getByText(/Welcome to the Home Page/i);
-//   expect(homeElement).toBeInTheDocument();
-// });
+describe('App Component', () => {
+    test('renders without crashing', () => {
+        render(<App />);
+    });
 
-// test('renders about page when navigating to /about', () => {
-//   window.history.pushState({}, 'About Page', '/about');
-//   render(
-//     <BrowserRouter>
-//       <App />
-//     </BrowserRouter>
-//   );
-//   const aboutElement = screen.getByText(/This is the About Page/i);
-//   expect(aboutElement).toBeInTheDocument();
-// });
+    test('renders NavBar and default route when user is not logged in', () => {
+        render(
+            <App />
+        );
 
-// test('renders contact page when navigating to /contact', () => {
-//   window.history.pushState({}, 'Contact Page', '/contact');
-//   render(
-//     <BrowserRouter>
-//       <App />
-//     </BrowserRouter>
-//   );
-//   const contactElement = screen.getByText(/Contact Us/i);
-//   expect(contactElement).toBeInTheDocument();
-// });
+        // NavBar should be rendered
+        const navBarElement = screen.getByText('Home');
+        expect(navBarElement).toBeInTheDocument();
+
+        // HomePage should be rendered by default
+        const homePageElement = screen.getByText('GET GREAT SERVICES AT GREAT PRICES');
+        expect(homePageElement).toBeInTheDocument();
+    });
+
+
+
+    //   test('renders Navigation Bar and the ProfileHomepage route when user is logged in', () => {
+    //     render(
+
+    //             <AuthContext.Provider value={mockAuthContextValue}>
+    //             <App />
+    //             </AuthContext.Provider>
+
+    //     );
+
+    //     // const navBarElement = screen.getByText('/Home/i');
+    //     // expect(navBarElement).toBeInTheDocument();
+
+    //     // ProfileHomepage should be rendered when logged in
+    //     const profileHomepageElement = screen.getByText('/Profile/i');
+    //     expect(profileHomepageElement).toBeInTheDocument();
+    //   });
+
+
+});
