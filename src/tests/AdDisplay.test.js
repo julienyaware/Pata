@@ -19,7 +19,6 @@ describe('AdDisplay Component Driven Testing', () => {
     const infoTextElement = screen.getByText('Get service providers closest to you');
     expect(infoTextElement).toBeInTheDocument();
 
-    // Check if button is rendered
     const buttonElement = screen.getByText('Find Services');
     expect(buttonElement).toBeInTheDocument();
     expect(buttonElement).toHaveClass('bg-[#1623CE] rounded-md font-medium w-[200px] my-4 mx-auto py-3 text-black');
@@ -28,7 +27,6 @@ describe('AdDisplay Component Driven Testing', () => {
   test('renders ReactTyped animation', () => {
     render(<AdDisplay />);
 
-    // Check if ReactTyped animation is rendered
     const typedTextElement = screen.getByText('Get Fast, accessible clientelle and services');
     expect(typedTextElement).toBeInTheDocument();
   });

@@ -31,7 +31,7 @@ const Providers = () => {
         getInfo(); // <-- fetch/compute coupeur value
     }, []);
     if (!providerPortfolios){
-        console.log("wait"); // or loading indicator/etc
+        window.alert('Loading'); // or loading indicator/etc
     }else{
         console.log(providerPortfolios);
     }

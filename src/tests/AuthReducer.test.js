@@ -5,7 +5,7 @@ describe('AuthReducer', () => {
     const initialState = { currentUser: null };
     const action = { type: 'LOGIN', payload: { id: 1, username: 'julliet' } };
     const newState = AuthReducer(initialState, action);
-    expect(newState).toEqual({ currentUser: { id: 1, username: 'user1' } });
+    expect(newState).toEqual({ currentUser: { id: 1, username: 'julliet' } });
   });
 
   test('returns the expected state  for LOGOUT action', () => {
@@ -16,8 +16,8 @@ describe('AuthReducer', () => {
   });
 
   test('returns the expected state for unknown action type', () => {
-    const initialState = { currentUser: { id: 1, username: 'usejullietr1' } };
-    const action = { type: 'ANY_OTHER_ACTION' };
+    const initialState = { currentUser: { id: 1, username: 'julliet' } };
+    const action = { type: 'UNKNOWN_ACTION' };
     const newState = AuthReducer(initialState, action);
     expect(newState).toEqual(initialState);
   });
