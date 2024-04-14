@@ -112,6 +112,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
+              id='login-button'
               onClick={(e) => validateEmailAndPassword(e)}
               className=" text-black w-full flex justify-center py-3 px-4 border border-transparent   bg-[#1623CE] rounded-md font-medium "
             >
