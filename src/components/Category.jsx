@@ -5,6 +5,7 @@ const Category = ({providersInfo}) => {
 const [isModalOpen, setIsModalOpen] = useState(false);
 
 
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -13,6 +14,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
     setIsModalOpen(false);
   };
 
+  
     return (
         <div className='h-64 my-8'>
         <div class="max-w-xs ">
@@ -108,7 +110,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
                   </div>
                 </div>
               </div>
-              <AddReview/>
+              <AddReview providersInfo={providersInfo}/>
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button onClick={handleCloseModal} type="button" className=" w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-black  text-[#1623CE] text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
                   Close
