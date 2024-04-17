@@ -4,8 +4,8 @@ import { categories } from './data/categories';
 const Categories = () => {
    
     return (
-        <div className="max-w-[1640px] m-auto px-4 py-12 mx-10">
-      <h1 className="font-bold text-[#1623CE] text-4xl text-center">
+        <div className="max-w-[1640px] m-auto px-10 py-12  bg-white h-screen w-screen">
+      <h1 className="font-bold text-black text-4xl text-center">
         CATEGORIES
       </h1>
       {/* Categories */}
@@ -13,7 +13,7 @@ const Categories = () => {
         {categories.map((item, index) => (
           <div
             key={index}
-            className="bg-gray-100 hover:bg-white cursor-pointer duration-500 rounded-lg p-4 flex justify-between items-center"
+            className=" border border-[#1623CE]  hover:bg-white cursor-pointer duration-500 rounded-lg py-10  px-10 flex justify-between items-center"
           >
             <h2 className="font-bold sm:text-xl">{item.name}</h2>
             <img src={item.image} alt={item.name} className="w-20" />
