@@ -77,47 +77,48 @@ const ProfileTabs = ({ crudOps }) => {
 
     const handleFieldValidations = (e, formState) => {
         e.preventDefault();
+        profileInformationSubmitted(e, formState)
 
         // Validate each field
-        const validationErrors = {};
-        if (!formState.firstName) {
-            validationErrors.field1 = 'First Name is required';
-        }
-        if (!formState.lastName) {
-            validationErrors.lastName = 'Last Name is required';
-        }
-        if (!formState.phoneNumber) {
-            validationErrors.phoneNumber = 'Phone Number is required';
-        }
-        if (formState.phoneNumber !== 10) {
-            validationErrors.phoneNumber = 'Phone Number has to be 10 digits';
-        }
-        if (!formState.state) {
-            validationErrors.state = 'State is required';
-        }
-        if (!formState.occupation) {
-            validationErrors.occupation = 'Occupation is required';
-        }
-        if (!formState.education) {
-            validationErrors.education = 'Education is required';
-        }
-        if (!formState.yearsOfExperience) {
-            validationErrors.yearsOfExperience = 'Years Of Experience is required';
-        }
+        // const validationErrors = {};
+        // if (!formState.firstName) {
+        //     validationErrors.field1 = 'First Name is required';
+        // }
+        // if (!formState.lastName) {
+        //     validationErrors.lastName = 'Last Name is required';
+        // }
+        // if (!formState.phoneNumber) {
+        //     validationErrors.phoneNumber = 'Phone Number is required';
+        // }
+        // if (formState.phoneNumber !== 10) {
+        //     validationErrors.phoneNumber = 'Phone Number has to be 10 digits';
+        // }
+        // if (!formState.state) {
+        //     validationErrors.state = 'State is required';
+        // }
+        // if (!formState.occupation) {
+        //     validationErrors.occupation = 'Occupation is required';
+        // }
+        // if (!formState.education) {
+        //     validationErrors.education = 'Education is required';
+        // }
+        // if (!formState.yearsOfExperience) {
+        //     validationErrors.yearsOfExperience = 'Years Of Experience is required';
+        // }
 
-        if (!formState.hourlyRate) {
-            validationErrors.hourlyRate = 'Hourly Rate is required';
-        }
-        if (!formState.availability) {
-            validationErrors.availability = 'Availability Rate is required';
-        }
+        // if (!formState.hourlyRate) {
+        //     validationErrors.hourlyRate = 'Hourly Rate is required';
+        // }
+        // if (!formState.availability) {
+        //     validationErrors.availability = 'Availability Rate is required';
+        // }
 
-        setErrors(validationErrors);
+        // setErrors(validationErrors);
 
-        // If there are no validation errors, submit the form
-        if (Object.keys(validationErrors).length === 0) {
-            profileInformationSubmitted(e, formState)
-        }
+        // // If there are no validation errors, submit the form
+        // if (Object.keys(validationErrors).length === 0) {
+        //     profileInformationSubmitted(e, formState)
+        // }
     };
 
     const nextStep = () => {
@@ -141,7 +142,7 @@ const ProfileTabs = ({ crudOps }) => {
 
     const profileInformationSubmitted = (e, formState) => {
         nextStep()
-        console.log(formState);
+        console.log('the form state is',formState);
         handleCreate(e, formState)
     }
 
