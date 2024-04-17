@@ -7,6 +7,7 @@ import { availbility } from './data/availability';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, deleteUser } from "firebase/auth";
+import DropDownMenu from './DropDownMenu';
 
 const ProfileTabs = ({ crudOps }) => {
     const [step, setStep] = useState(1);
@@ -148,11 +149,6 @@ const ProfileTabs = ({ crudOps }) => {
 
     return (
         <div className="relative min-h-screen flex" >
-            <div>
-                <button className='bg-[#fc4747] rounded-md font-medium w-[200px] my-6 mx-auto py-3  text-white'>
-                    Delete User Account
-                </button>
-            </div>
             <div className="container max-w-screen-xl mx-auto my-auto relative flex flex-col w-4/5">
                 <div className="text-3xl font-BG  whitespace-pre-line text-center tracking-tighter text-black">
                     Service Provider Information
@@ -423,6 +419,9 @@ const ProfileTabs = ({ crudOps }) => {
                         </motion.div>
                     )}
                 </form>
+            </div>
+            <div>
+                <DropDownMenu/>
             </div>
         </div>
     );

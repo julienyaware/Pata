@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import DropDownMenu from './DropDownMenu';
 
 
 const NavBar = (props) => {
@@ -30,7 +31,9 @@ const NavBar = (props) => {
                     <li className='p-5  border-gray-600 border-b'>Services</li>
                     <li className='p-5  border-gray-600 border-b'>Login</li>
                     <li className='p-5'>Register</li>
+                    <li><DropDownMenu/></li>
                 </ul>
+                <DropDownMenu/>
             </div>
         </div>
     );
