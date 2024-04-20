@@ -20,13 +20,12 @@ import ProfileImageUpload from './components/ProfileImageUpload';
 import ProfileComments from './components/ProfileComments';
 import { AuthContext } from './context/AuthContext';
 import Providers from './components/Providers';
-
+import Chatbot from './components/Chatbot';
 
 
 function App() {
-  
-
-   const {currentUser} = useContext(AuthContext)
+  console.log(process.env.REACT_APP_TEST_KEY)
+     const {currentUser} = useContext(AuthContext)
   const RequireAuth = ({children}) => {
     return currentUser ? (children) : <Navigate to="/login" />
     
@@ -76,6 +75,7 @@ function App() {
           <Route path="profilecomments" element={ <RequireAuth><ProfileComments/></RequireAuth>} />
           <Route path="categories" element={ <Categories/>} />
           <Route path="providers" element={ <Providers/>} />
+          <Route path="chatbot" element={ <Chatbot/>} />
           <Route path="category" element={ <Category/>} />
       </Routes>
     </BrowserRouter>
