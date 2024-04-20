@@ -42,20 +42,6 @@ const ProfileTabs = ({ crudOps }) => {
         setFormState((prevState) => ({ ...prevState, [name]: value }));
     };
 
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        gender: '',
-        state: '',
-        education: '',
-        yearsOfExperience: '',
-        hourlyRate: '',
-        availability: '',
-        phoneNumber: '',
-        occupation: '',
-        workDescription: ''
-    });
-
 
     const getProviderProfile = async () => {
         const providerInformation = {};

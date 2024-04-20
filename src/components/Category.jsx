@@ -20,7 +20,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
         <div class="max-w-xs ">
             <div class="bg-white shadow-xl rounded-lg py-3">
                 <div class="photo-wrapper p-2">
-                    <img class="w-32 h-32 rounded-full mx-auto" src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" alt="John Doe"/>
+                    <img class="w-32 h-32 rounded-full mx-auto" src={ providersInfo.avatarImageUrl ? providersInfo.avatarImageUrl :"https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} alt="Avater"/>
                 </div>
                 <div class="p-2">
                     <h3 class="text-center text-xl text-black font-bold leading-8">{providersInfo.firstName}</h3>
@@ -63,7 +63,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
                 <div className="sm:flex sm:items-start">
                   <div className="w-32 h-32 rounded-full mx-auto">
                     {/* Icon */}
-                    <img class="w-32 h-32 rounded-full mx-auto" src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" alt="prof pic"/>
+                    <img class="w-32 h-32 rounded-full mx-auto" src={ providersInfo.avatarImageUrl ? providersInfo.avatarImageUrl :"https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} alt="prof pic"/>
 
                   </div>
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
