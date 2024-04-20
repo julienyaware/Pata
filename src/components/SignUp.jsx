@@ -44,7 +44,7 @@ const SignUp = () => {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => { 
                     const user = userCredential.user;
-                    navigate("./login");
+                    navigate("./../login");
                 })
                 .catch((error) => {
                     const errorCode = error.code;
