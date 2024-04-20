@@ -2,19 +2,22 @@ import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { states } from './data/states';
+import { db } from '../Firabase';
 import { education } from './data/education';
 import { availbility } from './data/availability';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, deleteUser } from "firebase/auth";
+import { collection, getDocs } from "firebase/firestore";
 import DropDownMenu from './DropDownMenu';
+import {auth} from '../Firabase'
+
 
 const ProfileTabs = ({ crudOps }) => {
     const [step, setStep] = useState(1);
     const { currentUser } = useContext(AuthContext)
     const [error, setError] = useState('')
-
-    const auth = getAuth();
+    const [loggedInUserProviderInformation, setLoggedInUserProviderInformation] = useState([])
+    const [allProviderInformation, setAllProvidersInformation] = useState()
     const user = auth.currentUser;
     const navigate = useNavigate()
 
@@ -52,6 +55,70 @@ const ProfileTabs = ({ crudOps }) => {
         occupation: '',
         workDescription: ''
     });
+
+
+    const getProviderProfile = async () => {
+        const providerInformation = {};
+        const querySnapshot = await getDocs(collection(db, "profile"));
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          providerInformation[doc.id] = doc.data();
+        });
+        setAllProvidersInformation(providerInformation)
+        return providerInformation
+    }
+
+    useEffect(() => {
+        const getInfo = async () => {
+            try {
+                const getProviderInfo = await getProviderProfile();
+                console.log('getproviderinfo',getProviderInfo)
+                console.log('key zaa getproviderinfo',getProviderInfo)
+                const info = Object.keys(getProviderInfo)
+                    .filter(item => getProviderInfo[item].user_id === currentUser.uid)
+                    .map(item => {
+                        console.log('information yangu niii', getProviderInfo[item])
+                        setFormState(getProviderInfo[item])
+                        return item
+                    })
+                    console.log('inffoo ni', info)
+                    setLoggedInUserProviderInformation(info);
+                    console.log(loggedInUserProviderInformation.length)
+            } catch(error) {
+                console.log(error)
+                // handle any rejections/errors/etc
+            }
+        };
+        getInfo(); //
+    }, []);
+
+
+    //     const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
+    //       if (user) {
+    //         // User is logged in
+    //         getProvideProfile()
+    //         // const userRef = firestore.collection('users').doc(userAuth.uid);
+    //         // const snapshot = await userRef.get();
+    //         // if (snapshot.exists) {
+    //         //   // Populate form data with user information
+    //         //   const userData = snapshot.data();
+    //         //   setFormData(userData);
+    //         // }
+    //         // setUser(userAuth);
+    //       } else {
+    //         // No user is logged in
+    //         // setUser(null);
+    //         // setFormData({
+    //         //   name: '',
+    //         //   email: '',
+    //         //   // Reset other fields
+    //         // });
+    //       }
+    //     });
+    
+    //     return () => unsubscribe();
+    //   }, []);
+    
 
     // const deleteUserAccount = ()=> {
 
@@ -138,12 +205,10 @@ const ProfileTabs = ({ crudOps }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formState);
     };
 
     const profileInformationSubmitted = (e, formState) => {
         nextStep()
-        console.log('the form state is',formState);
         handleCreate(e, formState)
     }
 
@@ -151,7 +216,8 @@ const ProfileTabs = ({ crudOps }) => {
         <div className="relative min-h-screen flex" >
             <div className="container max-w-screen-xl mx-auto my-auto relative flex flex-col w-4/5">
                 <div className="text-3xl font-BG  whitespace-pre-line text-center tracking-tighter text-black">
-                    Service Provider Information
+                    {loggedInUserProviderInformation.length>0 ?'Edit Service Provider Information' : 'Service Provider Information'}
+                    
                 </div>
                 <form onSubmit={handleSubmit} className="mt-12 md:w-4/5 mx-auto rounded-3xl" style={{ backgroundColor: '#ebe9d8' }}>
                     {step === 1 && (

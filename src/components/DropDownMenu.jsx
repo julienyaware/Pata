@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../Firabase';
 import { useState } from 'react';
 
+
 const DropDownMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -17,12 +18,24 @@ const DropDownMenu = () => {
     signOut(auth)
       .then(() => {
         window.alert("Logout Success");
-        navigate("./login")
+        localStorage.clear();
+        navigate("./../../login")
       })
       .catch((error) => {
         window.alert(error.message);
       });
   };
+
+   // const deleteUserAccount = ()=> {
+
+    //     try {
+    //         deleteUser(user).then(() => {
+    //             window.alert("Account has been deleted successfully")
+    //             navigate("./")
+    //         })
+    //     } catch (error) {
+    //         window.alert(error)
+    //     }
 
 
   const handleItemClick = (action) => {
