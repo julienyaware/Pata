@@ -78,6 +78,7 @@ const ProfileTabs = ({ crudOps }) => {
         getInfo(); //
     }, []);
 
+    
 
     //     const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
     //       if (user) {
@@ -131,48 +132,50 @@ const ProfileTabs = ({ crudOps }) => {
 
     const handleFieldValidations = (e, formState) => {
         e.preventDefault();
-        profileInformationSubmitted(e, formState)
+        // profileInformationSubmitted(e, formState)
 
-        // Validate each field
-        // const validationErrors = {};
-        // if (!formState.firstName) {
-        //     validationErrors.field1 = 'First Name is required';
-        // }
-        // if (!formState.lastName) {
-        //     validationErrors.lastName = 'Last Name is required';
-        // }
-        // if (!formState.phoneNumber) {
-        //     validationErrors.phoneNumber = 'Phone Number is required';
-        // }
-        // if (formState.phoneNumber !== 10) {
-        //     validationErrors.phoneNumber = 'Phone Number has to be 10 digits';
-        // }
-        // if (!formState.state) {
-        //     validationErrors.state = 'State is required';
-        // }
-        // if (!formState.occupation) {
-        //     validationErrors.occupation = 'Occupation is required';
-        // }
-        // if (!formState.education) {
-        //     validationErrors.education = 'Education is required';
-        // }
-        // if (!formState.yearsOfExperience) {
-        //     validationErrors.yearsOfExperience = 'Years Of Experience is required';
-        // }
+        //Validate each field
+        const validationErrors = {};
+        if (!formState.firstName) {
+            validationErrors.firstName = 'First Name is required';
+        }
+        if (!formState.lastName) {
+            validationErrors.lastName = 'Last Name is required';
+        }
+        if (!formState.phoneNumber) {
+            validationErrors.phoneNumber = 'Phone Number is required';
+        }
+        if (formState.phoneNumber !== 10) {
+            validationErrors.phoneNumber = 'Phone Number has to be 10 digits';
+        }
+        if (!formState.state) {
+            validationErrors.state = 'State is required';
+        }
+        if (!formState.occupation) {
+            validationErrors.occupation = 'Occupation is required';
+        }
+        if (!formState.education) {
+            validationErrors.education = 'Education is required';
+        }
+        if (!formState.yearsOfExperience) {
+            validationErrors.yearsOfExperience = 'Years Of Experience is required';
+        }
 
-        // if (!formState.hourlyRate) {
-        //     validationErrors.hourlyRate = 'Hourly Rate is required';
-        // }
-        // if (!formState.availability) {
-        //     validationErrors.availability = 'Availability Rate is required';
-        // }
+        if (!formState.hourlyRate) {
+            validationErrors.hourlyRate = 'Hourly Rate is required';
+        }
+        if (!formState.availability) {
+            validationErrors.availability = 'Availability Rate is required';
+        }
 
-        // setErrors(validationErrors);
+        setErrors(validationErrors);
 
-        // // If there are no validation errors, submit the form
-        // if (Object.keys(validationErrors).length === 0) {
-        //     profileInformationSubmitted(e, formState)
-        // }
+        // If there are no validation errors, submit the form
+        if (Object.keys(validationErrors).length === 0) {
+            profileInformationSubmitted(e, formState)
+        } else {
+            window.alert('Please ensure that you have filled all fields')
+        }
     };
 
     const nextStep = () => {
@@ -231,7 +234,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     placeholder="First Name"
                                     name="firstName"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.firstName}
                                     onChange={handleChange}
                                 />
@@ -245,7 +248,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     placeholder="Last Name"
                                     name="lastName"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.lastName}
                                     onChange={handleChange}
                                 />
@@ -261,7 +264,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     placeholder="Phone Number"
                                     name="phoneNumber"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.phoneNumber}
                                     onChange={handleChange}
                                 />
@@ -275,9 +278,10 @@ const ProfileTabs = ({ crudOps }) => {
                                     name='state'
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     onChange={handleChange}
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.state}
                                 >
+                                    <option> </option>
                                     {states.map((option, index) => {
                                         return (
                                             <option key={index}>
@@ -297,7 +301,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     placeholder="Occupation"
                                     name="occupation"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.occupation}
                                     onChange={handleChange}
                                 />
@@ -334,9 +338,10 @@ const ProfileTabs = ({ crudOps }) => {
                                     name='education'
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     onChange={handleChange}
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.education}
                                 >
+                                    <option> </option>
                                     {education.map((option, index) => {
                                         return (
                                             <option key={index}>
@@ -356,11 +361,11 @@ const ProfileTabs = ({ crudOps }) => {
                                     placeholder="Years Of experience"
                                     name="yearsOfExperience"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.yearsOfExperience}
                                     onChange={handleChange}
                                 />
-                                {errors.number && <p className='text-red-500 my-1'>{errors.number}</p>}
+                                {errors.yearsOfExperience && <p className='text-red-500 my-1'>{errors.yearsOfExperience}</p>}
                             </div>
                             <div>
 
@@ -401,7 +406,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     placeholder="Hourly Rate"
                                     name="hourlyRate"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.hourlyRate}
                                     onChange={handleChange}
                                 />
@@ -414,9 +419,11 @@ const ProfileTabs = ({ crudOps }) => {
                                 onChange={handleChange}
                                 name='availability'
                                 placeholder="Availability"
-                                style={{ backgroundColor: '#e0cfc8' }}
+                                style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                 value={formState.availability} // 
                             >
+                               <option> </option>
+
                                 {availbility.map((option, index) => {
                                     return (
                                         <option key={index}>
@@ -433,7 +440,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     name="workDescription"
                                     className="mt-4 border border-gray-400 w-full rounded-md px-4 py-3 focus:outline-none "
                                     rows={8}
-                                    style={{ backgroundColor: '#e0cfc8' }}
+                                    style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.workDescription}
                                     onChange={handleChange}
                                 />
