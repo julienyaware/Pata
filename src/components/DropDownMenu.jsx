@@ -26,24 +26,22 @@ const DropDownMenu = () => {
       });
   };
 
-   // const deleteUserAccount = ()=> {
+   const deleteUserAccount = async()=> {
+        try {
+            await auth.currentUser.delete();
+            window.alert("Account has been deleted successfully")
+            navigate("./../../signUp")
+        } catch (error) {
+            window.alert(error)
+        }
 
-    //     try {
-    //         deleteUser(user).then(() => {
-    //             window.alert("Account has been deleted successfully")
-    //             navigate("./")
-    //         })
-    //     } catch (error) {
-    //         window.alert(error)
-    //     }
-
-
+      }
   const handleItemClick = (action) => {
     // Perform action based on the clicked item
     if (action === 'logout') {
       handleLogout()
     } else if (action === 'deleteAccount') {
-      // Handle delete account
+      deleteUserAccount()
     }
     // Close the dropdown after performing the action
     setIsOpen(false);
