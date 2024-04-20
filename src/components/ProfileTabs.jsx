@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs } from "firebase/firestore";
 import DropDownMenu from './DropDownMenu';
 import {auth} from '../Firabase'
+import ErrorPopup from './ErrorPopup';
 
 
 const ProfileTabs = ({ crudOps }) => {
@@ -42,6 +43,13 @@ const ProfileTabs = ({ crudOps }) => {
         setFormState((prevState) => ({ ...prevState, [name]: value }));
     };
 
+    const showError = (message) => {
+        setError(message);
+      };
+    
+      const hideError = () => {
+        setError(null);
+      };
 
     const getProviderProfile = async () => {
         const providerInformation = {};
@@ -174,7 +182,8 @@ const ProfileTabs = ({ crudOps }) => {
         if (Object.keys(validationErrors).length === 0) {
             profileInformationSubmitted(e, formState)
         } else {
-            window.alert('Please ensure that you have filled all fields')
+            showError('Please ensure that you have filled all fields!')
+            // window.alert('Please ensure that you have filled all fields')
         }
     };
 
@@ -281,7 +290,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.state}
                                 >
-                                    <option> </option>
+                                    <option value="" disabled selected hidden>STATE</option>
                                     {states.map((option, index) => {
                                         return (
                                             <option key={index}>
@@ -341,7 +350,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                     value={formState.education}
                                 >
-                                    <option> </option>
+                                    <option value="" disabled selected hidden>Education</option>
                                     {education.map((option, index) => {
                                         return (
                                             <option key={index}>
@@ -422,7 +431,7 @@ const ProfileTabs = ({ crudOps }) => {
                                 style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                 value={formState.availability} // 
                             >
-                               <option> </option>
+                               <option value="" disabled selected hidden>AVAILABILITY</option>
 
                                 {availbility.map((option, index) => {
                                     return (
@@ -454,6 +463,7 @@ const ProfileTabs = ({ crudOps }) => {
                                 >
                                     Submit
                                 </button>
+                                {error && <ErrorPopup message={error} onClose={hideError} />}
                             </div>
                         </motion.div>
                     )}
