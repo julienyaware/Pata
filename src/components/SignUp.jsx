@@ -14,35 +14,35 @@ const SignUp = () => {
     const validateEmailAndPassword = (e) => {
         e.preventDefault()
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        if(email.trim() === ''){
-          setNotice('Email Address is required')
-          return;
+
+        if (email.trim() === '') {
+            setNotice('Email Address is required')
+            return;
         }
-        if(password.length>100 && email.length > 50){
-          setNotice('Username must be at most 50 characters and password at most 100 characters')
-          return;
+        if (password.length > 100 && email.length > 50) {
+            setNotice('Username must be at most 50 characters and password at most 100 characters')
+            return;
         }
-        if(password.trim() === '') {
-          setNotice('Password is required')
-          return;
+        if (password.trim() === '') {
+            setNotice('Password is required')
+            return;
         }
         if (!emailPattern.test(email)) {
             setNotice("Invalid email");
-          return;
+            return;
         };
-      
-        if (password.length<6) {
-          setNotice("Password should be at least 6 characters");
-          return;
+
+        if (password.length < 6) {
+            setNotice("Password should be at least 6 characters");
+            return;
         }
         signupWithUsernameAndPassword(e)
-      };
+    };
 
     const signupWithUsernameAndPassword = async (e) => {
         if (password === confirmPassword) {
             createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => { 
+                .then((userCredential) => {
                     const user = userCredential.user;
                     navigate("./../login");
                 })

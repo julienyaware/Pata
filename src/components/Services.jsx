@@ -1,16 +1,14 @@
 import React from 'react';
 import plumber from '../assets/plumber.png'
-import { Link, seNavigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
 const Services = () => {
 
-    const navigate = useNavigate()
 
-    const browseProviders = () => {
-        navigate("./categories")
-    }
+
+
     return (
         <div className='w-full py-[10 rem] px-4 bg-white'>
             <div className='max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8 '>

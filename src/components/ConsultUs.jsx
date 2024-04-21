@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const ConsultUs = () => {
     const navigate = useNavigate()
-    const goToChatBot = ()=> {
-      navigate('./chatbot')
+    const goToChatBot = () => {
+        navigate('./chatbot')
     }
     return (
         <div className='w-full px-4 py-16 text-white'>
@@ -15,7 +15,7 @@ const ConsultUs = () => {
                 </div>
                 <div className='my-4'>
                     <button className='bg-[#1623CE] rounded-md font-medium w-[200px] my-4 mx-auto py-3 text-black'
-                    onClick={goToChatBot()}
+                        onClick={goToChatBot()}
                     >Ask Us Anything!</button>
                 </div>
             </div>

@@ -14,7 +14,7 @@ const AboutUs = () => {
                     </p>
                     <Link
                         to="/signUp"
-        
+
                     >
                         <button className='bg-black rounded-md font-medium w-[200px] my-6 mx-auto py-3 md:mx-0 text-[#1623CE]'>
                             Register

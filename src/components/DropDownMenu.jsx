@@ -1,14 +1,14 @@
 import React from 'react';
-import {signOut, signInWithEmailAndPassword,} from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../Firabase';
 import { useState } from 'react';
 
 
 const DropDownMenu = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -26,18 +26,17 @@ const DropDownMenu = () => {
       });
   };
 
-   const deleteUserAccount = async()=> {
-        try {
-            await auth.currentUser.delete();
-            window.alert("Account has been deleted successfully")
-            navigate("./../../signUp")
-        } catch (error) {
-            window.alert(error)
-        }
+  const deleteUserAccount = async () => {
+    try {
+      await auth.currentUser.delete();
+      window.alert("Account has been deleted successfully")
+      navigate("./../../signUp")
+    } catch (error) {
+      window.alert(error)
+    }
 
-      }
+  }
   const handleItemClick = (action) => {
-    // Perform action based on the clicked item
     if (action === 'logout') {
       handleLogout()
     } else if (action === 'deleteAccount') {

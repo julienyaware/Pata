@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { auth } from "../Firabase";
 import { useState } from 'react';
-import {signOut, signInWithEmailAndPassword,} from "firebase/auth";
+import { signOut, signInWithEmailAndPassword, } from "firebase/auth";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
@@ -17,15 +17,15 @@ const Login = () => {
 
   const validateEmailAndPassword = (e) => {
     e.preventDefault()
-    if(email.trim() === ''){
+    if (email.trim() === '') {
       setNotice('Email Address is required')
       return;
     }
-    if(password.length>100 && email.length > 50){
+    if (password.length > 100 && email.length > 50) {
       setNotice('Username must be at most 50 characters and password at most 100 characters')
       return;
     }
-    if(password.trim() === '') {
+    if (password.trim() === '') {
       setNotice('Password is required')
       return;
     }
@@ -33,7 +33,7 @@ const Login = () => {
       setNotice("Invalid email");
       return;
     }
-    if (password.length<6) {
+    if (password.length < 6) {
       setNotice("Password should be at least 6 characters");
       return;
     }

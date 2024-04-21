@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { states } from './data/states';
 import { db } from '../Firabase';
 import { education } from './data/education';
@@ -9,7 +9,7 @@ import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs } from "firebase/firestore";
 import DropDownMenu from './DropDownMenu';
-import {auth} from '../Firabase'
+import { auth } from '../Firabase'
 import ErrorPopup from './ErrorPopup';
 
 
@@ -45,18 +45,18 @@ const ProfileTabs = ({ crudOps }) => {
 
     const showError = (message) => {
         setError(message);
-      };
-    
-      const hideError = () => {
+    };
+
+    const hideError = () => {
         setError(null);
-      };
+    };
 
     const getProviderProfile = async () => {
         const providerInformation = {};
         const querySnapshot = await getDocs(collection(db, "profile"));
         querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          providerInformation[doc.id] = doc.data();
+            // doc.data() is never undefined for query doc snapshots
+            providerInformation[doc.id] = doc.data();
         });
         setAllProvidersInformation(providerInformation)
         return providerInformation
@@ -66,27 +66,22 @@ const ProfileTabs = ({ crudOps }) => {
         const getInfo = async () => {
             try {
                 const getProviderInfo = await getProviderProfile();
-                console.log('getproviderinfo',getProviderInfo)
-                console.log('key zaa getproviderinfo',getProviderInfo)
                 const info = Object.keys(getProviderInfo)
                     .filter(item => getProviderInfo[item].user_id === currentUser.uid)
                     .map(item => {
-                        console.log('information yangu niii', getProviderInfo[item])
                         setFormState(getProviderInfo[item])
                         return item
                     })
-                    console.log('inffoo ni', info)
-                    setLoggedInUserProviderInformation(info);
-                    console.log(loggedInUserProviderInformation.length)
-            } catch(error) {
-                console.log(error)
+                setLoggedInUserProviderInformation(info);
+            } catch (error) {
+                window.alert(error)
                 // handle any rejections/errors/etc
             }
         };
         getInfo(); //
     }, []);
 
-    
+
 
     //     const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
     //       if (user) {
@@ -110,10 +105,10 @@ const ProfileTabs = ({ crudOps }) => {
     //         // });
     //       }
     //     });
-    
+
     //     return () => unsubscribe();
     //   }, []);
-    
+
 
     // const deleteUserAccount = ()=> {
 
@@ -140,9 +135,7 @@ const ProfileTabs = ({ crudOps }) => {
 
     const handleFieldValidations = (e, formState) => {
         e.preventDefault();
-        // profileInformationSubmitted(e, formState)
 
-        //Validate each field
         const validationErrors = {};
         if (!formState.firstName) {
             validationErrors.firstName = 'First Name is required';
@@ -183,7 +176,6 @@ const ProfileTabs = ({ crudOps }) => {
             profileInformationSubmitted(e, formState)
         } else {
             showError('Please ensure that you have filled all fields!')
-            // window.alert('Please ensure that you have filled all fields')
         }
     };
 
@@ -214,8 +206,8 @@ const ProfileTabs = ({ crudOps }) => {
         <div className="relative min-h-screen flex" >
             <div className="container max-w-screen-xl mx-auto my-auto relative flex flex-col w-4/5">
                 <div className="text-3xl font-BG  whitespace-pre-line text-center tracking-tighter text-black">
-                    {loggedInUserProviderInformation.length>0 ?'Edit Service Provider Information' : 'Service Provider Information'}
-                    
+                    {loggedInUserProviderInformation.length > 0 ? 'Edit Service Provider Information' : 'Service Provider Information'}
+
                 </div>
                 <form onSubmit={handleSubmit} className="mt-12 md:w-4/5 mx-auto rounded-3xl" style={{ backgroundColor: '#ebe9d8' }}>
                     {step === 1 && (
@@ -431,7 +423,7 @@ const ProfileTabs = ({ crudOps }) => {
                                 style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}
                                 value={formState.availability} // 
                             >
-                               <option value="" disabled selected hidden>AVAILABILITY</option>
+                                <option value="" disabled selected hidden>AVAILABILITY</option>
 
                                 {availbility.map((option, index) => {
                                     return (
@@ -490,7 +482,7 @@ const ProfileTabs = ({ crudOps }) => {
                 </form>
             </div>
             <div>
-                <DropDownMenu/>
+                <DropDownMenu />
             </div>
         </div>
     );

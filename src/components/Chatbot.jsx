@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import OpenAI from 'openai';
-import config from '../config';
 import axios from 'axios';
 
 
@@ -67,7 +66,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="flex bg-white flex-col h-screen">
+    <div className="flex bg flex-col h-screen">
       <div className="flex-grow p-4 overflow-y-auto">
         {messages.map((message, index) => (
           <div key={index} className={`mb-4 text-${message.sender === 'user' ? 'right' : 'left'}`}>
