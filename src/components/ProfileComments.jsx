@@ -48,7 +48,7 @@ const ProfileComments = () => {
                 .map(item => (
                     <div className="bg-white p-3 md:p-4 rounded-lg shadow-md" key={item}>
                         <h3 className="text-lg font-bold">{providerReviews[item].name}</h3>
-                        <p className="text-gray-700 text-sm mb-1 md:mb-2">Posted on April 22, 2023</p>
+                        <p className="text-gray-700 text-sm mb-1 md:mb-2">Posted on April 2024</p>
                         <p className="text-gray-700">{providerReviews[item].review}</p>
                     </div>
                 ))}
