@@ -50,7 +50,7 @@ function App() {
         workDescription: formState["workDescription"],
         user_id: currentUser.uid,
       });
-      window.alert("Document Created");
+      window.alert("Profile Created Successfully");
     } catch (error) {
       window.alert(error.message);
     }

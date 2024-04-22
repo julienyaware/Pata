@@ -22,7 +22,7 @@ const AddReview = ({ providersInfo }) => {
         review: formState["review"],
         user_id: providersInfo.user_id
       })
-      window.alert('Comment Submitted successfully')
+      window.alert('Message Sent successfully')
 
     } catch (error) {
       window.alert(error.message);
@@ -30,7 +30,7 @@ const AddReview = ({ providersInfo }) => {
   }
   return (
     <form class="bg-white p-6 rounded-lg shadow-md">
-  <h3 class="text-xl font-semibold mb-4">Review Your Provider</h3>
+  <h3 class="text-xl font-semibold mb-4">Leave a Message</h3>
   <div class="mb-6">
     <label class="block text-gray-800 font-semibold mb-2" for="name">Name (Optional)</label>
     <input
@@ -44,7 +44,7 @@ const AddReview = ({ providersInfo }) => {
     />
   </div>
   <div class="mb-6">
-    <label class="block text-gray-800 font-semibold mb-2" for="comment">Review</label>
+    <label class="block text-gray-800 font-semibold mb-2" for="comment">Message</label>
     <textarea
       name='review'
       value={formState.review}

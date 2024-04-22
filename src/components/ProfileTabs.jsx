@@ -146,7 +146,7 @@ const ProfileTabs = ({ crudOps }) => {
         if (!formState.phoneNumber) {
             validationErrors.phoneNumber = 'Phone Number is required';
         }
-        if (formState.phoneNumber !== 10) {
+        if (formState.phoneNumber < 10) {
             validationErrors.phoneNumber = 'Phone Number has to be 10 digits';
         }
         if (!formState.state) {
@@ -263,6 +263,7 @@ const ProfileTabs = ({ crudOps }) => {
                                     required
                                     type="text"
                                     placeholder="Phone Number"
+                                    maxLength={10}
                                     name="phoneNumber"
                                     className="mt-4 w-full border border-gray-300 rounded p-2 focus:outline-none"
                                     style={{ backgroundColor: '#e0cfc8', textTransform: 'uppercase' }}

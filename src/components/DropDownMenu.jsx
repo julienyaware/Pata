@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../Firabase';
 import { useState } from 'react';
+import { db } from '../Firabase';
+import { AuthContext } from '../context/AuthContext';
+import {getFirestore, doc, deleteDoc, getDoc} from "firebase/firestore";
+
 
 
 const DropDownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { currentUser } = useContext(AuthContext)
 
   const navigate = useNavigate()
 
@@ -26,8 +31,31 @@ const DropDownMenu = () => {
       });
   };
 
+  const deleteRecord = async () => {
+    //const docRef = doc(db, "profile", currentUser.uid);
+     
+    try {
+      const docRef = doc(db, "profile", currentUser.uid);
+      const docSnapshot = await getDoc(docRef);
+      if(docSnapshot.exists)
+      await deleteDoc(docRef)
+    window.alert("Your profile has been deleted successfully.")
+    } catch (error) {
+      window.alert(error);
+    }
+
+  // await deleteDoc(docRef)
+  // .then(() => {
+  //     console.log("Entire Document has been deleted successfully.")
+  // })
+  // .catch(error => {
+  //     console.log(error);
+  // })
+  }
+
   const deleteUserAccount = async () => {
     try {
+      await deleteRecord()
       await auth.currentUser.delete();
       window.alert("Account has been deleted successfully")
       navigate("./../../signUp")
