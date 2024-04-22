@@ -73,7 +73,7 @@ const Login = () => {
             Login
           </h2>
         </div>
-        <form className="mt-8 space-y-6"
+        <form id='login-form' className="mt-8 space-y-6"
           onReset={(e) => handleLogout(e)}>
           {notice !== '' &&
 

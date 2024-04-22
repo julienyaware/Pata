@@ -32,7 +32,7 @@ const steps=[
   {
     id: '3',
     options: [
-      { value: 1, label: 'Leaking tap', trigger: '6' },
+      { value: 1, label: 'Leaking tap', trigger: '5' },
       { value: 2, label: 'Blockage', trigger: '7' },
       { value: 3, label: 'No water', trigger: '8' },
     ],

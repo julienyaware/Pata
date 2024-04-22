@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Chatbot from './Chatbot';
 
 const ConsultUs = () => {
-    const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleChatbot = () => {
       setIsOpen(!isOpen);
     };
-    const goToChatBot = () => {
-        navigate('./chatbot')
-    }
+    
     return (
         <div className='w-full px-4 py-16 text-white'>
             <div className='max-w-[1240px] mx-auto grid lg:grid-cols-3'>
