@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Pata/static/css/main.b6fea2b0.css",
+    "main.js": "/Pata/static/js/main.40c42c8c.js",
+    "static/js/453.ed6f5b8e.chunk.js": "/Pata/static/js/453.ed6f5b8e.chunk.js",
+    "static/media/plumber.png": "/Pata/static/media/plumber.93fca92450eac44c4ad2.png",
+    "index.html": "/Pata/index.html",
+    "main.b6fea2b0.css.map": "/Pata/static/css/main.b6fea2b0.css.map",
+    "main.40c42c8c.js.map": "/Pata/static/js/main.40c42c8c.js.map",
+    "453.ed6f5b8e.chunk.js.map": "/Pata/static/js/453.ed6f5b8e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b6fea2b0.css",
+    "static/js/main.40c42c8c.js"
+  ]
+}
