@@ -1,5 +1,6 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as BrowserRouter } from 'react-router-dom';
 import { useContext, useState } from "react";
 import { db, auth } from './Firabase';
 import {signOut,} from "firebase/auth";
