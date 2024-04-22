@@ -75,7 +75,6 @@ function App() {
           <Route path="profilecomments" element={ <RequireAuth><ProfileComments/></RequireAuth>} />
           <Route path="categories" element={ <Categories/>} />
           <Route path="providers" element={ <Providers/>} />
-          <Route path="chatbot" element={ <Chatbot/>} />
           <Route path="category" element={ <Category/>} />
       </Routes>
     </BrowserRouter>

@@ -36,7 +36,7 @@ const Providers = () => {
         console.log(providerPortfolios);
     }
     return (
-        <div className='w-full h-full py-[10 rem] px-4 bg-white h-screen w-screen'>
+        <div className='w-full h-full py-[10 rem] px-4 bg-white '>
             
             <div className='max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8'> 
             {Object.keys(providerPortfolios).map(item => (

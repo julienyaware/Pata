@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Chatbot from './Chatbot';
 
 const ConsultUs = () => {
     const navigate = useNavigate()
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggleChatbot = () => {
+      setIsOpen(!isOpen);
+    };
     const goToChatBot = () => {
         navigate('./chatbot')
     }
@@ -15,10 +21,15 @@ const ConsultUs = () => {
                 </div>
                 <div className='my-4'>
                     <button className='bg-[#1623CE] rounded-md font-medium w-[200px] my-4 mx-auto py-3 text-black'
-                        onClick={goToChatBot()}
-                    >Ask Us Anything!</button>
+                        onClick={toggleChatbot}
+                    > {isOpen ? 'Close Chatbot' : 'Open Chatbot'}</button>
                 </div>
             </div>
+            {isOpen && (
+        <div className="fixed bottom-8 right-8 bg-white border border-gray-300 shadow-lg p-4 rounded-lg z-10">
+          <Chatbot/>
+        </div>
+      )}
 
         </div>
     );

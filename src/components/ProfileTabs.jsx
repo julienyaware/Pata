@@ -209,7 +209,7 @@ const ProfileTabs = ({ crudOps }) => {
                     {loggedInUserProviderInformation.length > 0 ? 'Edit Service Provider Information' : 'Service Provider Information'}
 
                 </div>
-                <form onSubmit={handleSubmit} className="mt-12 md:w-4/5 mx-auto rounded-3xl" style={{ backgroundColor: '#ebe9d8' }}>
+                <form onSubmit={handleSubmit} className="sm:mx-auto sm:w-11/12 mt-12 md:w-4/5 mx-auto rounded-3xl" style={{ backgroundColor: '#ebe9d8' }}>
                     {step === 1 && (
                         <motion.div
                             key={step}

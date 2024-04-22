@@ -37,23 +37,27 @@ const ProfileComments = () => {
         console.log(providerReviews);
     }
     return (
-        <div className='h-screen w-screen'>
-            <div class="bg-gray-100 p-6">
-                <h2 class="text-lg font-bold mb-4">Comments</h2>
+        <div className='min-h-screen w-screen'>
+    <div className='min-h-screen'>
+    <div className="bg-gray-100 p-3 md:p-6">
+        <h2 className="text-lg font-bold mb-3 md:mb-4">Comments</h2>
 
-                <div class="flex flex-col space-y-4">
-                    {Object.keys(providerReviews)
-                        .filter(item => providerReviews[item].user_id === currentUser.uid)
-                        .map(item => (
-                            <div class="bg-white p-4 rounded-lg shadow-md" key={item}>
-                                <h3 class="text-lg font-bold">{providerReviews[item].name}</h3>
-                                <p class="text-gray-700 text-sm mb-2">Posted on April 17, 2023</p>
-                                <p class="text-gray-700">{providerReviews[item].review}</p>
-                            </div>
-                        ))}
-                </div>
-            </div>
+        <div className="flex flex-col space-y-3 md:space-y-4">
+            {Object.keys(providerReviews)
+                .filter(item => providerReviews[item].user_id === currentUser.uid)
+                .map(item => (
+                    <div className="bg-white p-3 md:p-4 rounded-lg shadow-md" key={item}>
+                        <h3 className="text-lg font-bold">{providerReviews[item].name}</h3>
+                        <p className="text-gray-700 text-sm mb-1 md:mb-2">Posted on April 17, 2023</p>
+                        <p className="text-gray-700">{providerReviews[item].review}</p>
+                    </div>
+                ))}
         </div>
+    </div>
+</div>
+
+</div>
+
     );
 };
 
