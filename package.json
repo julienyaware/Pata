@@ -26,8 +26,8 @@
     "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "e2e": "cucumber-js e2e-tests",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --testPathIgnorePatterns=.*e2e.test.js",
     "test:e2e": "react-scripts test --testPathPattern=.*e2e.test.js$"
   },
@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@cucumber/cucumber": "^10.4.0",
     "@testing-library/react": "^14.3.0",
     "chromedriver": "^123.0.3",
